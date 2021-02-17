@@ -1,2 +1,3 @@
 # packages
-compiled packages, mostly for debian and termux  
+compiled packages  
+instructions of how to compile them  
