@@ -1,2 +1,2 @@
 # packages
-store compiled packages, mostly for debian and termux
+compiled packages, mostly for debian and termux  
