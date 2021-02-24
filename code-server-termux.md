@@ -9,7 +9,8 @@
 
 ### Install dependencies, including python, nodejs, and yarn:
     $ pkg install -y python nodejs yarn git
-
+### use Alibaba agent
+    $ yarn config set registry https://registry.npm.taobao.org
 ### Install code-server, this step will take a while
     $ yarn global add code-server
 ### test code-server
