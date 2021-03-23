@@ -22,12 +22,10 @@ jobs:
     steps:
       - name: Install dependencies
         run: | 
-          wget https://raw.githubusercontent.com/zongou/notes/master/linux/sources/ubuntu-aliyun-source
-          sudo mv ubuntu-* /etc/apt/sources.list
-          sudo apt update
+          # liblua5.1-dev for ubuntu
           sudo apt install -y git libncurses5-dev libncurses5 \
             libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
-            libxt-dev python-dev python3-dev ruby-dev lua5.1 lua5.1-dev checkinstall
+            libxt-dev python-dev python3-dev ruby-dev liblua5.1 lua5.1-dev checkinstall
             
       - name: Clone repository
         run: git clone https://github.com/vim/vim
