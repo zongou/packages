@@ -26,36 +26,37 @@ jobs:
         
       # Install dependencies
       - name: Install dependencies
-        run: apt install -y \
-          git libncurses5-dev libncurses5 libgtk2.0-dev \
-          libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
-          libxt-dev python-dev python3-dev \
-          ruby-dev lua5.1 lua5.1-dev checkinstall
+        run: | 
+          apt install -y \
+            git libncurses5-dev libncurses5 libgtk2.0-dev \
+            libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
+            libxt-dev python-dev python3-dev \
+            ruby-dev lua5.1 lua5.1-dev checkinstall
 
       # compile source code
       - name: compile source code
         run: |
-            cd vim
-            ./configure --with-features=huge \
-                --enable-multibyte \
-                --enable-rubyinterp \
-                --enable-pythoninterp \
-                --enable-perlinterp \
-                --enable-luainterp \
-                --enable-gui=auto \
-                --enable-cscope 
-            make -j8
+          cd vim
+          ./configure --with-features=huge \
+              --enable-multibyte \
+              --enable-rubyinterp \
+              --enable-pythoninterp \
+              --enable-perlinterp \
+              --enable-luainterp \
+              --enable-gui=auto \
+              --enable-cscope 
+          make -j8
             
       # Test package
       - name: Test package
         run: |
-            # remove old vim package
-            cd vim
-            apt remove -y vim vim-runtime gvim
-            apt remove -y vim-tiny vim-common vim-gui-common vim-nox
-            rm -rf /usr/share/vim
-            # install
-            dpkg -i --force-overwrite vim_*.deb
-            vim -i
-       
+          # remove old vim package
+          cd vim
+          apt remove -y vim vim-runtime gvim
+          apt remove -y vim-tiny vim-common vim-gui-common vim-nox
+          rm -rf /usr/share/vim
+          # install
+          dpkg -i --force-overwrite vim_*.deb
+          vim -i
+
 
