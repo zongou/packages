@@ -16,18 +16,16 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: debain-latest
+    runs-on: debain
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Install dependencies
       - name: Install dependencies
         run: | 
-          sudo apt install -y \
-            git libncurses5-dev libncurses5 libgtk2.0-dev \
-            libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
-            libxt-dev python-dev python3-dev \
-            ruby-dev lua5.1 lua5.1-dev checkinstall
+          sudo apt-get install -y libncurses5-dev libncurses5 libgnome2-dev libgnomeui-dev \
+            libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+            libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev python3-dev ruby-dev lua5.1 lua5.1-dev
             
       # Clone repository
       - name: Clone repository
