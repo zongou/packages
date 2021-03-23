@@ -46,7 +46,7 @@ jobs:
       - name: Pack to .deb
         run: |
           cd vim
-          checkinstall -y
+          sudo checkinstall -y
           
       - name: Test package
         run: |
