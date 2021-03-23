@@ -66,6 +66,5 @@ jobs:
         #         cd termux-app
         #          curl -sL https://git.io/file-transfer | sh
         #         ./transfer wet ./app/build/outputs/apk/debug/*.apk
-          vim -i
 
 
