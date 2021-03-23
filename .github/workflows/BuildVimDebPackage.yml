@@ -1,0 +1,63 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Build_Vim_Deb_Package
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Clone repository
+      - name: Clone repository
+        run: git clone https://github.com/vim/vim
+        
+      # Install dependencies
+      - name: Install dependencies
+        run: apt install -y \
+          git libncurses5-dev libncurses5 libgtk2.0-dev \
+          libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
+          libxt-dev python-dev python3-dev \
+          ruby-dev lua5.1 lua5.1-dev checkinstall
+
+      # compile source code
+      - name: compile source code
+        run: |
+			echo $(pwd)
+			pwd
+            cd vim
+            ./configure --with-features=huge \
+                --enable-multibyte \
+                --enable-rubyinterp \
+                --enable-pythoninterp \
+                --enable-perlinterp \
+                --enable-luainterp \
+                --enable-gui=auto \
+                --enable-cscope 
+            make -j8
+            
+      # Test package
+      - name: Test package
+        run: |
+            # remove old vim package
+            cd vim
+            apt remove -y vim vim-runtime gvim
+            apt remove -y vim-tiny vim-common vim-gui-common vim-nox
+            rm -rf /usr/share/vim
+            # install
+            dpkg -i --force-overwrite vim_*.deb
+            vim -i
+       
+
