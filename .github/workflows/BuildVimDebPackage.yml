@@ -54,6 +54,11 @@ jobs:
           sudo dpkg -i --force-overwrite vim_*.deb
           vim -i
           
+      - name: Pack to .deb
+        run: |
+          cd vim
+          checkinstall -y
+          
       - name: Store generated APK file
         uses: actions/upload-artifact@v1
         with:
