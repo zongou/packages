@@ -35,8 +35,6 @@ jobs:
       # compile source code
       - name: compile source code
         run: |
-			echo $(pwd)
-			pwd
             cd vim
             ./configure --with-features=huge \
                 --enable-multibyte \
