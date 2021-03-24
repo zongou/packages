@@ -23,9 +23,7 @@ jobs:
       - name: Install dependencies
         run: | 
           # liblua5.1-dev for ubuntu
-          sudo apt install -y git libncurses5-dev libncurses5 \
-            libgtk2.0-dev libatk1.0-dev libcairo2-dev libx11-dev libxpm-dev \
-            libxt-dev python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev checkinstall
+          sudo apt install -y python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev checkinstall
             
       - name: Clone repository
         run: git clone https://github.com/vim/vim
@@ -59,7 +57,6 @@ jobs:
           sudo dpkg -i --force-overwrite vim*.deb
           vim --version
           pwd
-          ls
           cp *.deb ../vim82.deb
 
       - name: Store generated APK file
