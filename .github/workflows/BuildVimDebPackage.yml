@@ -46,7 +46,7 @@ jobs:
       - name: Pack to .deb
         run: |
           cd vim
-          sudo checkinstall --y -D vim82.deb
+          sudo checkinstall -y
           
       - name: Test package
         run: |
