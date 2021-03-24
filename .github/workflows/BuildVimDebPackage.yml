@@ -35,7 +35,7 @@ jobs:
               --enable-multibyte \
               --enable-gui=false \
               --enable-cscope 
-          make -j8
+          make
             
       - name: Pack to .deb
         run: |
