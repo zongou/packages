@@ -30,7 +30,7 @@ jobs:
       - name: Clone repository
         run: git clone https://github.com/vim/vim
 
-      - name: compile source code
+      - name: Compile source code
         run: |
           cd vim
           ./configure --with-features=huge \
@@ -46,7 +46,7 @@ jobs:
       - name: Pack to .deb
         run: |
           cd vim
-          sudo checkinstall -y
+          sudo checkinstall --default -D vim82.deb
           
       - name: Test package
         run: |
@@ -56,15 +56,17 @@ jobs:
           sudo apt remove -y vim-tiny vim-common vim-gui-common vim-nox
           sudo rm -rf /usr/share/vim
           # install
-          sudo dpkg -i --force-overwrite vim_*.deb
+          sudo dpkg -i --force-overwrite vim*.deb
           vim --version
           pwd
+          ls
+          cp *.deb ../vim82.deb
 
       - name: Store generated APK file
         uses: actions/upload-artifact@v1
         with:
           name: vim82
-          path: ./vim/*.deb
+          path: ./vim82.deb
         #     - name: Upload Apk to WeTransfer
         #       run: |
         #         cd termux-app
