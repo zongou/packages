@@ -39,7 +39,7 @@ jobs:
               --enable-pythoninterp \
               --enable-perlinterp \
               --enable-luainterp \
-              --enable-gui=auto \
+              --enable-gui=false \
               --enable-cscope 
           make -j8
             
