@@ -23,7 +23,7 @@ jobs:
       - name: Install dependencies
         run: | 
           # liblua5.1-dev for ubuntu
-          sudo apt install -y python-dev python3-dev ruby-dev lua5.1 liblua5.1-dev checkinstall
+          sudo apt install -y checkinstall
             
       - name: Clone repository
         run: git clone https://github.com/vim/vim
@@ -33,10 +33,6 @@ jobs:
           cd vim
           ./configure --with-features=huge \
               --enable-multibyte \
-              --enable-rubyinterp \
-              --enable-pythoninterp \
-              --enable-perlinterp \
-              --enable-luainterp \
               --enable-gui=false \
               --enable-cscope 
           make -j8
